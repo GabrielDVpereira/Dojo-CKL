@@ -1,8 +1,8 @@
-# MyApp
+# Dojo Brutal do Emmental
 
 > React Native project
 
-_Describe your project here_
+Projeto simples para servir como primeiro dojo para o time Brutal do Emmental. Ele basicamente consiste em um contador implementado baseado na dinâmica de Dojos e seguindo os conceitos de TDD. 
 
 ## Development
 
