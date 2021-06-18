@@ -15,10 +15,10 @@ export default function WelcomeScreen({ name }) {
   };
 
   return (
-    <SafeAreaView>
-      <Text heading bold>{count}</Text>
-      <TouchableOpacity onPress={incrementValue}>
-        <Text>Increment</Text>
+    <SafeAreaView style={{flex: 1,justifyContent: 'center', alignItems: 'center'}}>
+      <Text testID="counter" style={{marginBottom: 10}}>{count}</Text>
+      <TouchableOpacity onPress={incrementValue} style={{ backgroundColor: 'red', padding: 10, borderRadius: 5}}>
+        <Text style={{color: '#fff', fontWeight: 'bold'}}>Increment</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

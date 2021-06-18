@@ -4,13 +4,15 @@ import WelcomeScreen from '../../screens/WelcomeScreen';
 
 describe('Test', () => {
   it('should get increment', async () => {
-    const { getByText } = render(<WelcomeScreen />);
+    const { getByText, getByTestId } = render(<WelcomeScreen />);
+    const counter = getByTestId('counter'); 
+    console.log(counter)
     const button = getByText('Increment');
     await act(() => {
       fireEvent.press(button);
     });
     const numberText = getByText('1');
-    // const getIncrement = () => {};
+   
     expect(numberText).not.toBeFalsy();
   });
 });
