@@ -5,14 +5,25 @@ import WelcomeScreen from '../../screens/WelcomeScreen';
 describe('Test', () => {
   it('should get increment', async () => {
     const { getByText, getByTestId } = render(<WelcomeScreen />);
-    const counter = getByTestId('counter'); 
-    console.log(counter)
+    const input = getByTestId('input');
+    const counter = getByTestId('counter');
+    const initialValue = Number(counter.children[0]);
+
     const button = getByText('Increment');
-    await act(() => {
+    const stepValue = 2;
+
+    act(() => {
+      fireEvent.changeText(
+        input,
+        `${stepValue}` /** String(stepValue); stepValue.toString(); stepValue + '' */,
+      );
+    });
+    act(() => {
       fireEvent.press(button);
     });
-    const numberText = getByText('1');
-   
-    expect(numberText).not.toBeFalsy();
+
+    const finalValue = Number(counter.children[0]);
+
+    expect(finalValue).toBe(initialValue + stepValue);
   });
 });

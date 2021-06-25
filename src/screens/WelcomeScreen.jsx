@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 /**
  * Essa feature será um contador que incrementa de x em x
@@ -8,17 +14,34 @@ import { SafeAreaView } from 'react-native-safe-area-context';
  * Ao clicar no botão, o número que aparece na tela irá aumentar em x
  */
 export default function WelcomeScreen({ name }) {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(3);
+  const [stepValue, setStepValue] = useState('');
 
   const incrementValue = () => {
-    setCount((prevCount) => prevCount + 1);
+    const stepValueNumber = Number(stepValue);
+    setCount((prevCount) => prevCount + stepValueNumber);
   };
 
   return (
-    <SafeAreaView style={{flex: 1,justifyContent: 'center', alignItems: 'center'}}>
-      <Text testID="counter" style={{marginBottom: 10}}>{count}</Text>
-      <TouchableOpacity onPress={incrementValue} style={{ backgroundColor: 'red', padding: 10, borderRadius: 5}}>
-        <Text style={{color: '#fff', fontWeight: 'bold'}}>Increment</Text>
+    <SafeAreaView
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text testID="counter" style={{ marginBottom: 10 }}>
+        {count}
+      </Text>
+
+      <TextInput
+        testID="input"
+        placeholder="Increment value"
+        value={stepValue}
+        onChangeText={(text) => {
+          setStepValue(text);
+        }}
+      />
+
+      <TouchableOpacity
+        onPress={incrementValue}
+        style={{ backgroundColor: 'red', padding: 10, borderRadius: 5 }}>
+        <Text style={{ color: '#fff', fontWeight: 'bold' }}>Increment</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
